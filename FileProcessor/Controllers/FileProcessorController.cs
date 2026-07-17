@@ -44,7 +44,7 @@ namespace FileProcessor.Controllers
                     return BadRequest("Only .csv files are supported.");
                 }
 
-                var record = _fileProcessService.ProcessFile(file);
+                var record = await _fileProcessService.ProcessFileAsync(file);
 
                 _logger.LogInformation("FileUpload end...");
 

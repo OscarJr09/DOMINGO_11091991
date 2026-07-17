@@ -4,6 +4,6 @@ namespace FileProcessor.Interfaces
 {
     public interface IFileProcessService
     {
-        public FileProcessorRecord ProcessFile(IFormFile file);
+        public Task<FileProcessorRecord> ProcessFileAsync(IFormFile file);
     }
 }

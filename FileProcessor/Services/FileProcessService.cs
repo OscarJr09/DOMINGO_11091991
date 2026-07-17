@@ -8,13 +8,21 @@ namespace FileProcessor.Services
     public class FileProcessService : IFileProcessService
     {
         private readonly ILogger<IFileProcessService> _logger;
+        private readonly IFileTrackingService _fileTrackingService;
 
-        public FileProcessService(ILogger<IFileProcessService> logger)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="fileTrackingService"></param>
+        public FileProcessService(ILogger<IFileProcessService> logger,
+            IFileTrackingService fileTrackingService)
         {
             _logger = logger;
+            _fileTrackingService = fileTrackingService;
         }
 
-        public FileProcessorRecord ProcessFile(IFormFile file)
+        public async Task<FileProcessorRecord> ProcessFileAsync(IFormFile file)
         {
             _logger.LogInformation("ProcessFile start...");
 
@@ -47,6 +55,8 @@ namespace FileProcessor.Services
 
                 record.Status = "Success";
                 record.ProcessedProductCount = records?.Count ?? 0;
+
+                await _fileTrackingService.TrackFileUploadAsync(record);
 
                 _logger.LogInformation($"ProcessFile Record Status: {record?.Status}...");
             }

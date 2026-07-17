@@ -10,6 +10,7 @@ builder.Services.AddSingleton<ILoggerFactory, LoggerFactory>();
 builder.Services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
 
 builder.Services.AddScoped<IFileProcessService, FileProcessService>();
+builder.Services.AddScoped<IFileTrackingService, FileTrackingService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

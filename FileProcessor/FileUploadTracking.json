@@ -1,0 +1,21 @@
+{
+  "FileUploadedCount": 4,
+  "UploadedFileList": [
+    {
+      "FileName": "products-100.csv",
+      "UploadTimestamp": "2026-07-17T05:59:54.2648526Z"
+    },
+    {
+      "FileName": "products-100.csv",
+      "UploadTimestamp": "2026-07-17T06:00:25.9171225Z"
+    },
+    {
+      "FileName": "products-100_2.csv",
+      "UploadTimestamp": "2026-07-17T06:00:34.1205622Z"
+    },
+    {
+      "FileName": "products-100_3.csv",
+      "UploadTimestamp": "2026-07-17T06:01:00.307794Z"
+    }
+  ]
+}
