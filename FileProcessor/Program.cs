@@ -6,6 +6,9 @@ using Microsoft.OpenApi.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddSingleton<ILoggerFactory, LoggerFactory>();
+builder.Services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
+
 builder.Services.AddScoped<IFileProcessService, FileProcessService>();
 
 builder.Services.AddControllers();

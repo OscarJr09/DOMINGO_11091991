@@ -30,18 +30,29 @@ namespace FileProcessor.Controllers
         {
             try
             {
+                _logger.LogInformation("FileUpload start...");
+
                 if (file == null || file.Length == 0)
+                {
+                    _logger.LogInformation("FileUpload: No file uploaded.");
                     return BadRequest("No file uploaded.");
+                }
 
                 if (!Path.GetExtension(file.FileName).Equals(".csv", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    _logger.LogInformation("FileUpload: Only .csv files are supported.");
                     return BadRequest("Only .csv files are supported.");
-                
+                }
+
                 var record = _fileProcessService.ProcessFile(file);
+
+                _logger.LogInformation("FileUpload end...");
 
                 return Ok(new { Message = "File processed successfully.", Data = record });
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex.Message, ex);
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
